@@ -1,0 +1,15 @@
+text
+
+process_note.md
+
+raw_data/
+
+*.duckdb
+*.duckdb.wal
+.env
+__pycache__/
+target/
+dbt_packages/
+logs/
+.venv
+
