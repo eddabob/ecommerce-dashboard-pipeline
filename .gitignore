@@ -2,8 +2,6 @@ text
 
 process_note.md
 
-raw_data/
-
 *.duckdb
 *.duckdb.wal
 .env

@@ -1,0 +1,36 @@
+name: Ecommerce dbt CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dbt-build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install dbt-duckdb duckdb pandas
+
+      - name: Seed DuckDB warehouse
+        run: python ingest.py
+
+      - name: Run dbt debug, build, and test
+        working-directory: ecommerce_dbt
+        run: |
+          dbt debug --profiles-dir ./profiles
+          dbt build --profiles-dir ./profiles
