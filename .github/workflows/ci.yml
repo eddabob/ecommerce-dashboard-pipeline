@@ -29,6 +29,9 @@ jobs:
       - name: Seed DuckDB warehouse
         run: python ingest.py
 
+      - name: Build Dashboard
+        run: streamlit run dashboard.py
+
       - name: Run dbt debug, build, and test
         working-directory: ecommerce_dbt
         run: |
