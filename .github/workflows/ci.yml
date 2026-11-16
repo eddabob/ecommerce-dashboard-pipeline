@@ -27,7 +27,7 @@ jobs:
           pip install dbt-duckdb duckdb pandas
 
       - name: Seed DuckDB warehouse
-        run: python ingest_data.py
+        run: python ingest.py
 
       - name: Run dbt debug, build, and test
         working-directory: ecommerce_dbt
